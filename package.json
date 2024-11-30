@@ -1,0 +1,23 @@
+{
+  "name": "ogt",
+  "version": "1.0.0",
+  "description": "Ordered General Tree",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aidinio/OrderedGeneralTree.git"
+  },
+  "keywords": [
+    "tree"
+  ],
+  "author": "Aidin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aidinio/OrderedGeneralTree/issues"
+  },
+  "homepage": "https://github.com/aidinio/OrderedGeneralTree#readme"
+}

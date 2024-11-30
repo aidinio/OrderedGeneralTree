@@ -1,9 +1,9 @@
-import { Node } from "./Node";
-import { nodeList } from "./NodeList";
-import { CommandHelp } from "./CommandHelp";
-import { Canvas } from "./Canvas";
+import { Node } from "./Node.js";
+import { NodeList } from "./NodeList.js";
+import { CommandHelp } from "./CommandHelp.js";
+import { Canvas } from "./Canvas.js";
 
-let nodes = new nodeList([
+let nodes = new NodeList([
     new Node(0, "root", null, null, null, null),
     // new Node(1, "room", 0, null, null, null),
   // new Node(0, "root", null, null, null, 1),
@@ -27,7 +27,8 @@ commandHelp.addDoc("swap", "swap {Node1 ID} {Node2 ID}");
 commandHelp.addDoc("prependChild", "prependChild {parent ID} {Node ID}");
 commandHelp.addDoc("newChild", "newChild {parent ID}");
 
-const readline = require("readline");
+// const readline = require("readline");
+import readline from "readline"
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
@@ -54,7 +55,7 @@ async function main() {
     canvas.append(`\n> ${input}`);
     if (!input) continue;
     if (input == "exit") break;
-    tokens = input.split(" ");
+    let tokens = input.split(" ");
     if (tokens[0] == "moveAfter") {
       nodes.moveAfter(Number(tokens[1]), Number(tokens[2]));
     } else if (tokens[0] == "moveBefore") {

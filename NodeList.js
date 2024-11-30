@@ -1,4 +1,6 @@
-export class nodeList {
+import { Node } from "./Node.js";
+
+export class NodeList {
   constructor(list = []) {
     this.list = list;
     this.nextIndex = list.length;
