@@ -1,11 +1,11 @@
 import { Node } from "./Node.js";
-import { NodeList } from "./NodeList.js";
+import { NodeList, deepCopyWithMethods } from "./NodeList.js";
 import { CommandHelp } from "./CommandHelp.js";
 import { Canvas } from "./Canvas.js";
 
 let nodes = new NodeList([
-    new Node(0, "root", null, null, null, null),
-    // new Node(1, "room", 0, null, null, null),
+  new Node(0, "root", null, null, null, null),
+  // new Node(1, "room", 0, null, null, null),
   // new Node(0, "root", null, null, null, 1),
   //   new Node(1, "room", 0, 2, null, 3),
   //   new Node(2, "room", 0, null, 1, 6),
@@ -28,7 +28,7 @@ commandHelp.addDoc("prependChild", "prependChild {parent ID} {Node ID}");
 commandHelp.addDoc("newChild", "newChild {parent ID}");
 
 // const readline = require("readline");
-import readline from "readline"
+import readline from "readline";
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
@@ -42,7 +42,7 @@ function question(prompt) {
   });
 }
 
-const canvas = new Canvas([
+let canvas = new Canvas([
   nodes.show.bind(nodes),
   commandHelp.show.bind(commandHelp),
 ]);
@@ -65,7 +65,11 @@ async function main() {
     } else if (tokens[0] == "prependChild") {
       nodes.prependChild(Number(tokens[1]), Number(tokens[2]));
     } else if (tokens[0] == "newChild") {
-      nodes.newChild(Number(tokens[1]));
+      nodes = nodes.newChild(Number(tokens[1]));
+      canvas.updateFuncList([
+        nodes.show.bind(nodes),
+        commandHelp.show.bind(commandHelp),
+      ]);
     }
   }
   rl.close();

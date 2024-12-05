@@ -3,6 +3,9 @@ export class Canvas {
     this.funcList = funcList;
     this.tail = "";
   }
+  updateFuncList(funcList) {
+    this.funcList = funcList
+  }
   append(s) {
     this.tail += s;
   }
